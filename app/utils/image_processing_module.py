@@ -3,10 +3,12 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import cv2
 
+
 def prep_image(raw_img):
     modified_img = cv2.resize(raw_img, (900, 600), interpolation=cv2.INTER_AREA)
     modified_img = modified_img.reshape(modified_img.shape[0] * modified_img.shape[1], 3)
     return modified_img
+
 
 def rgb_to_hex(rgb_color):
     hex_color = "#"
@@ -14,6 +16,7 @@ def rgb_to_hex(rgb_color):
         i = int(i)
         hex_color += ("{:02x}".format(i))
     return hex_color
+
 
 def color_analysis(img, num_of_colors: int = 5):
     clf = KMeans(n_clusters=num_of_colors)
